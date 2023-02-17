@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Etch-A-Sketch</title>
   <!--Author: Robson Leão Cardozo-->
   <!--https://github.com/RobsonCardozo-->
-
+  <!--Adicione um favicon-->
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
   <div class="right">
     <div class="gridContainer"></div>
   </div>
-
   <div class="page">
     <h1>ETCH-A-SKETCH</h1>
-    <label for="quantity">Grid Size</label>
-    <input type="number" id="quantity" name="quantity"/>
-    <button class="reset">RESET</button>
-  </div>
+<!--Adicione uma seção de instruções-->
+<p>Use o mouse para criar desenhos na grade abaixo. Clique no botão RESET para limpar a tela.</p>
 
+<label for="quantity">Tamanho da grade (1 a 100)</label>
+<input type="number" id="quantity" name="quantity" min="1" max="64" value="8"/>
+
+<button class="reset">RESET</button>
+  </div>
+  <!--Adicione comentários-->
   <script src="script.js"></script>
 </body>
-
 </html>
