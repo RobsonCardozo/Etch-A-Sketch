@@ -1,0 +1,26 @@
+name: Run Local Server
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install http-server
+      run: npm install --global http-server
+      
+    - name: Run http-server
+      run: http-server .
+      env:
+        CI: false
+      
+    - name: Open web page
+      run: |
+        sleep 5
+        xdg-open http://localhost:8080/index.html || gnome-open http://localhost:8080/index.html || open http://localhost:8080/index.html || start http://localhost:8080/index.html
