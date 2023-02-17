@@ -1,26 +1,36 @@
-name: Run Local Server
+name: Deploy on Localhost
 
 on: [push]
 
 jobs:
   build:
+
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - name: Install http-server
-      run: npm install --global http-server
-      
-    - name: Run http-server
-      run: http-server .
-      env:
-        CI: false
-      
-    - name: Open web page
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2.5.0
+      with:
+        node-version: '14.x'
+    - name: Install dependencies
+      run: npm install
+    - name: Build
+      run: npm run build
+    - name: Start server
       run: |
-        sleep 5
-        xdg-open http://localhost:8080/index.html || gnome-open http://localhost:8080/index.html || open http://localhost:8080/index.html || start http://localhost:8080/index.html
+        cd build
+        python3 -m http.server 8080 --bind 127.0.0.1
+    - name: Wait for server to start
+      run: |
+        while [ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080)" != "200" ]; do sleep 5; done
+    - name: Open browser
+      if: runner.os == 'Windows'
+      run: start http://localhost:8080/index.html
+    - name: Open browser
+      if: runner.os != 'Windows'
+      run: open http://localhost:8080/index.html
