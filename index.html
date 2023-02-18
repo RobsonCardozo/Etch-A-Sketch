@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Etch-A-Sketch</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-    <div class="page">
-      <h1>ETCH-A-SKETCH</h1>
-      <label for="quantity">Grid Size</label>
-      <input type="number" id="quantity" name="quantity" />
-      <button class="reset">RESET</button>
-      <div class="gridContainer"></div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etch-A-Sketch by Robson Cardozo</title>
+  <!--Author: Robson Cardozo-->
+  <!--https://github.com/RobsonCardozo-->
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="right">
+    <div class="gridContainer"></div>
+  </div>
+  <div class="page">
+    <h2>ETCH-A-SKETCH</h2>
+    <p>Instruções: Use o botão esquerdo do mouse para pintar de <strong>preto</strong><br>
+      e o botão esquerdo para pintar de <strong><span style="color: red;">vermelho</span>
+    </strong> na grade acima.</p>
+
+<label for="quantity">Tamanho da Grade</label>
+<input type="number" id="quantity" name="quantity" min="1" max="64" value="8"/>
+
+<button class="reset">RESET</button>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
