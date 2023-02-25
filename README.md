@@ -1,1 +1,1 @@
-Etch-A-Sketch by Robson Cardozo
+Etch-A-Sketch in JavaScript
